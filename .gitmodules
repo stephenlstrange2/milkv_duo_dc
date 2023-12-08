@@ -1,0 +1,3 @@
+[submodule "duo-examples"]
+	path = duo-examples
+	url = https://github.com/boberace/duo-examples.git
