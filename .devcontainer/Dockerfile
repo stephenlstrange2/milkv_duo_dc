@@ -15,12 +15,6 @@ RUN groupadd --gid $USER_GID $CONTAINER_USER \
     && echo $CONTAINER_USER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$CONTAINER_USER \
     && chmod 0440 /etc/sudoers.d/$CONTAINER_USER
 
-# RUN apt-get update \
-#   && apt install -y -q \
-#   cmake \
-#   git \
-#   && rm -rf /var/lib/apt/lists/*
-
 # install docker
 RUN apt-get update \
     && apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common \
@@ -38,6 +32,13 @@ RUN if getent group docker > /dev/null 2>&1; then \
     usermod -aG docker $CONTAINER_USER
 
 RUN apt-get update && apt-get upgrade -y
+
+RUN curl -O https://raw.githubusercontent.com/milkv-duo/duo-examples/main/envsetup.sh \
+    && chmod +x envsetup.sh \
+    && ./envsetup.sh
+
+RUN mv envsetup.sh /home/${CONTAINER_USER}/.envsetup.sh \
+    && echo "source ~/.envsetup.sh" >> /home/${CONTAINER_USER}/.bashrc
 
 USER ${CONTAINER_USER}
 ENV USER=${CONTAINER_USER}

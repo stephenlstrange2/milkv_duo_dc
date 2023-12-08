@@ -1,5 +1,7 @@
 
-alias sba="source ~/.bash_aliases"
+alias sba="source .bash_aliases"
+
+source ~/envsetup.sh
 
 # show git git branch in prompt
 parse_git_branch() {
