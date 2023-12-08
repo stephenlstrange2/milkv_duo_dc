@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/ubuntu
+{
+	"name": "MilkV-duo",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	// Add the IDs of extensions you want installed when the container is created
+	"workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+	/* the path of workspace folder to be opened after container is running
+	 */
+	"workspaceFolder": "${localWorkspaceFolder}",
+	"mounts": [
+		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
+		"source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/home/mvduo/.bash_aliases,type=bind"
+	],
+	"forwardPorts": [8888],
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"idf.customExtraPaths": "",
+				"idf.gitPath": "/usr/bin/git"
+			},
+			"extensions": [
+				"ms-vscode.cpptools"
+			],
+		},
+		"codespaces": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"idf.customExtraPaths": "",
+				"idf.gitPath": "/usr/bin/git"
+			},
+			"extensions": [
+				"ms-vscode.cpptools"
+			],
+		}
+	},
+	"runArgs": ["--privileged"],
+	"postCreateCommand": "sudo service docker start"
+}
