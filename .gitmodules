@@ -1,3 +1,6 @@
 [submodule "duo-examples"]
 	path = duo-examples
 	url = https://github.com/boberace/duo-examples.git
+[submodule "duo-buildroot-sdk"]
+	path = duo-buildroot-sdk
+	url = https://github.com/boberace/duo-buildroot-sdk.git
