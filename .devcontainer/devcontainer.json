@@ -2,17 +2,15 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/ubuntu
 {
 	"name": "MilkV-duo",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	// Add the IDs of extensions you want installed when the container is created
-	"workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
-	/* the path of workspace folder to be opened after container is running
-	 */
-	"workspaceFolder": "${localWorkspaceFolder}",
+	// "build": {
+	// 	"dockerfile": "Dockerfile"
+	// },
+	"image": "milkvtech/milkv-duo:latest",
+	"workspaceFolder": "/home/work",
+	"workspaceMount": "source=${localWorkspaceFolder}/duo-buildroot-sdk,target=/home/work,type=bind,consistency=cached",
 	"mounts": [
 		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
-		"source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/home/mvduo/.bash_aliases,type=bind"
+		"source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/home/work/.bash_aliases,type=bind"
 	],
 	"forwardPorts": [8888],
 	"customizations": {
@@ -39,7 +37,7 @@
 	},
 	"runArgs": [
 	"--privileged",
-	"-v", "/var/run/docker.sock:/var/run/docker.sock"
+	// "-v", "/var/run/docker.sock:/var/run/docker.sock"
 	]
 	// "postCreateCommand": "sudo service docker start"
 }
