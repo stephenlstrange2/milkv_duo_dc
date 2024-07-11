@@ -1,7 +1,8 @@
+export LC_ALL=C
 
-alias sba="source .bash_aliases"
+alias sba="source /root/.bash_aliases"
 
-source ~/envsetup.sh
+source /home/work/duo-examples/envsetup.sh
 
 # show git git branch in prompt
 parse_git_branch() {

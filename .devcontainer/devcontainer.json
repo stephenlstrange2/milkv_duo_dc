@@ -8,9 +8,14 @@
 	"image": "milkvtech/milkv-duo:latest",
 	"workspaceFolder": "/home/work",
 	"workspaceMount": "source=${localWorkspaceFolder}/duo-buildroot-sdk,target=/home/work,type=bind,consistency=cached",
+	// "workspaceMount": "source=${localWorkspaceFolder},target=/home/work,type=bind,consistency=cached",
 	"mounts": [
 		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
-		"source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/home/work/.bash_aliases,type=bind"
+		"source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/root/.bash_aliases,type=bind",
+		"source=${localWorkspaceFolder}/.devcontainer,target=/home/work/.devcontainer,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/duo-examples,target=/home/work/duo-examples,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/duo-projects-temp,target=/home/work/duo-projects-temp,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/duo-projects,target=/home/work/duo-projects,type=bind,consistency=cached"
 	],
 	"forwardPorts": [8888],
 	"customizations": {
@@ -36,8 +41,6 @@
 		}
 	},
 	"runArgs": [
-	"--privileged",
-	// "-v", "/var/run/docker.sock:/var/run/docker.sock"
+	"--privileged"
 	]
-	// "postCreateCommand": "sudo service docker start"
 }
