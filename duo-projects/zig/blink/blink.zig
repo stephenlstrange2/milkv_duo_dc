@@ -4,7 +4,7 @@ const wx = @cImport({
 });
 
 pub fn main() !void {
-    var board = "duo".*;
+    var board = "milkv_duo256m".*;
     const DUO_LED = 25;
 
     const stdout = std.io.getStdOut().writer();
