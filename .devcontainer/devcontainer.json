@@ -2,14 +2,13 @@
 	"name": "MilkV-duo",
 	"image": "milkvtech/milkv-duo:latest",
 	"workspaceFolder": "/home/work",
-	"workspaceMount": "source=/home/stephen/milkv_duo_dc/duo-buildroot-sdk,target=/home/work,type=bind,consistency=cached",
+	"workspaceMount": "source=${localWorkspaceFolder}/duo-buildroot-sdk,target=/home/work/duo-buildroot-sdk,type=bind,consistency=cached",
 	"mounts": [
-		"source=extensionCache,target=/root/.vscode-server/extensions,type=volume",
-		"source=/home/stephen/milkv_duo_dc/.devcontainer/.bash_aliases,target=/root/.bash_aliases,type=bind",
-		"source=/home/stephen/milkv_duo_dc/.devcontainer,target=/home/work/.devcontainer,type=bind,consistency=cached",
-		"source=/home/stephen/milkv_duo_dc/duo-examples,target=/home/work/duo-examples,type=bind,consistency=cached",
-		"source=/home/stephen/milkv_duo_dc/duo-projects-temp,target=/home/work/duo-projects-temp,type=bind,consistency=cached",
-		"source=/home/stephen/milkv_duo_dc/duo-projects,target=/home/work/duo-projects,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer/.bash_aliases,target=/root/.bash_aliases,type=bind",
+    "source=${localWorkspaceFolder}/.devcontainer,target=/home/work/.devcontainer,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/duo-examples,target=/home/work/duo-examples,type=bind,consistency=cached",
+    // "source=${localWorkspaceFolder}/duo-projects-temp,target=/home/work/duo-projects-temp,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/duo-projects,target=/home/work/duo-projects,type=bind,consistency=cached"
 	],
 	"forwardPorts": [8888],
 	"customizations": {
